@@ -62,7 +62,7 @@ public enum Bank {
     UBS_EUROPE("UBSWESMMXXX", "0226", "UBS EUROPE SE, SUCURSAL EN ESPAÑA."),
     CITIBANK_EUROPE("CITIESMXXXX", "1474", "CITIBANK EUROPE PLC, SUCURSAL EN ESPAÑA."),
     TRIODOS_BANK("TRIOESMMXXX", "1491", "TRIODOS BANK NV, SUCURSAL EN ESPAÑA."),
-    
+
     BNP_PARIBAS_FR("BNPAFRPP", "30004", "BNP Paribas"),
     CREDIT_AGRICOLE_FR("AGRIFRPP", "30006", "Crédit Agricole"),
     SOCIETE_GENERALE_FR("SOGEFRPP", "30003", "Société Générale"),
@@ -73,18 +73,18 @@ public enum Bank {
     HSBC_FRANCE("CCFRFRPP", "30056", "HSBC France"),
     CREDIT_NORD("NORDFRPP", "30076", "Crédit du Nord"),
     CREDIT_COOPERATIF("CCOPFRPP", "42559", "Crédit Coopératif"),
-    
-    UNKNOWN_BANK("UNKN","----","Banco Descoñecido");
-    
+
+    UNKNOWN_BANK("UNKN", "----", "Banco Descoñecido");
+
 
     private final String codigo;
     private final String nombre;
     private final String bic;
 
-    Bank(String codigobic,String codigo, String nombre) {
+    Bank(String codigobic, String codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.bic=codigobic;
+        this.bic = codigobic;
     }
 
     public String code() {
@@ -94,8 +94,23 @@ public enum Bank {
     public String bank() {
         return nombre;
     }
-    
+
     public String swift() {
         return bic;
+    }
+
+    public static Bank get(String codigo){
+        Bank[] banks = Bank.values();
+
+        for (Bank bank : banks){
+            if(codigo.equals(bank.codigo)){
+                return bank;
+            }
+        }
+        return UNKNOWN_BANK;
+    }
+
+    public String toString() {
+        return "[" + codigo + "] " + nombre;
     }
 }

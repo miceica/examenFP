@@ -61,4 +61,15 @@ public enum Provincia {
         return codigo;
     }
 
+    public static Provincia get(String codigo){
+        Provincia[] provincias = Provincia.values();
+
+        for (Provincia provincia : provincias){
+            if(codigo.equals(provincia.codigo)){
+                return provincia;
+            }
+        }
+        return Provincia.valueOf((codigo.toUpperCase()));
+    }
+
 }

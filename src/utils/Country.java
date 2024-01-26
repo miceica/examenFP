@@ -218,10 +218,35 @@ public enum Country {
     public int code() {
         return code;
     }
- 
-    public String phonePrefix() {
-        return "+"+code;
-    }
-    
-}
 
+    public String phonePrefix() {
+        return "+" + code;
+    }
+
+    public static Country get(String codigoISO) {
+        Country[] countries = Country.values();
+
+        for (Country country : countries) {
+            if (codigoISO.equals(country.codigoISO)) {
+                return country;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public static Country get(int codigoNumerico) {
+        Country[] countries = Country.values();
+
+        for (Country country : countries) {
+            if (codigoNumerico == (country.code)) {
+                return country;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    @Override
+    public String toString() {
+        return "nombre del país " + nombre;
+    }
+}
