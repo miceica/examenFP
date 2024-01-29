@@ -35,7 +35,7 @@ public class Curriculos extends Storage {
     /**
      * Actualiza o Candidato data si existe ou lanza unha StorageException si non existe
      *
-     * @param key
+     * @param data
      * @throws StorageException
      */
     public void update(Object data) throws StorageException {
